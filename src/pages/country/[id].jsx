@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, {  useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import styles from "./country.module.css";
-
+import Proptypes from 'prop-types'
 
 
 const getCountry = async (id) => {
@@ -119,6 +118,10 @@ const Country = ({ country }) => {
     </Layout>
   );
 };
+
+Country.propTypes = {
+  country: Proptypes.object
+}
 
 export default Country;
 

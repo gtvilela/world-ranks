@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import React, {  useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import styles from "./country.module.css";
+
+
 
 const getCountry = async (id) => {
   const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
@@ -8,6 +11,8 @@ const getCountry = async (id) => {
 
   return country;
 };
+
+
 
 const Country = ({ country }) => {
   const [borders, setBorders] = useState([]);
@@ -99,7 +104,7 @@ const Country = ({ country }) => {
 
               <div className={styles.details_panel_borders_container}>
                 {borders.map(({ flag, name }) => (
-                  <div className={styles.details_panel_borders_country}>
+                  <div key={name} className={styles.details_panel_borders_country}>
                     <img src={flag} alt={name}></img>
                     <div className={styles.details_panel_borders_name}>
                       {name}

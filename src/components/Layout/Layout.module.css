@@ -1,36 +1,36 @@
 .container {
-    padding: 24px;
-    height: 100vh;
+  padding: 24px;
+  height: 100vh;
 
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 
-    max-width: 1100px;
-    margin: 0 auto;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 32px;
-}   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
 
 .footer {
-    padding: 20px;
-    text-align: center;
-    font-size: 0.75rem;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.75rem;
 }
 
 .theme_switcher {
-    border: none;
-    background-color: transparent;
-    padding: 0;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 
-    color: var(--text-secondary);
-    margin-left: 4px;
+  color: var(--text-secondary);
+  margin-left: 4px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

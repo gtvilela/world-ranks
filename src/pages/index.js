@@ -28,10 +28,10 @@ export default function Home({ countries }) {
         </div>
 
         <div className={styles.input}>
-        <SearchInput 
-          placeholder="Filter by Name, Region or SubRegion"
-          onChange={onInputChange}
-        />
+          <SearchInput
+            placeholder="Filter by Name, Region or SubRegion"
+            onChange={onInputChange}
+          />
         </div>
       </div>
       <CountriesTable countries={filteredCountries} />

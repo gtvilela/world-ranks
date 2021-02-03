@@ -82,7 +82,7 @@ const Layout = ({ children, title = "World Ranks" }) => {
 };
 
 Layout.propTypes = {
-  children: Proptypes.string,
+  children: Proptypes.object,
   title: Proptypes.string
 }
 

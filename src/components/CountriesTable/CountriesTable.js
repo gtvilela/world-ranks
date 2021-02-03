@@ -1,10 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./CountriesTable.module.css";
 import {
   KeyboardArrowDownRounded,
   KeyboardArrowUpRounded,
 } from "@material-ui/icons";
+import Proptypes from 'prop-types';
+import { CountriesTableHeading, CountriesTableButton } from "./StyledComponents";
+
 
 const orderBy = (countries, value, direction) => {
   if (direction === "asc") {
@@ -57,24 +60,24 @@ const CountriesTable = ({ countries }) => {
   };
   return (
     <div>
-      <div className={styles.heading}>
+      <CountriesTableHeading>
         <div className={styles.heading_flag}></div>
-        <button
+        <CountriesTableButton
           className={styles.heading_name}
           onClick={() => setValueAndDirection("name")}
         >
           <div>Name</div>
           {value === "name" && <SortArrow direction={direction} />}
-        </button>
-        <button
+        </CountriesTableButton>
+        <CountriesTableButton
           className={styles.heading_population}
           onClick={() => setValueAndDirection("population")}
         >
           <div>Population</div>
           {value === "population" && <SortArrow direction={direction} />}
-        </button>
+        </CountriesTableButton>
 
-        <button
+        <CountriesTableButton
           className={styles.heading_area}
           onClick={() => setValueAndDirection("name")}
         >
@@ -82,15 +85,15 @@ const CountriesTable = ({ countries }) => {
             Area (km<sup style={{ fontSize: "0.5rem" }}>2</sup>)
           </div>
           {value === "area" && <SortArrow direction={direction} />}
-        </button>
-        <button
+        </CountriesTableButton>
+        <CountriesTableButton
           className={styles.heading_gini}
           onClick={() => setValueAndDirection("population")}
         >
           <div>Gini</div>
           {value === "gini" && <SortArrow direction={direction} />}
-        </button>
-      </div>
+        </CountriesTableButton>
+      </CountriesTableHeading>
 
       {orderedCountries.map((country) => (
         <Link href={`/country/${country.alpha3Code}`} key={country.name}>
@@ -108,5 +111,9 @@ const CountriesTable = ({ countries }) => {
     </div>
   );
 };
+
+CountriesTable.propTypes = {
+  countries: Proptypes.array
+} 
 
 export default CountriesTable;

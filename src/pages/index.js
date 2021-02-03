@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout/Layout";
 import styles from "../../styles/Home.module.css";
 import SearchInput from "../components/SearchInput/SearchInput";
 import CountriesTable from "../components/CountriesTable/CountriesTable";
+import PropTypes from 'prop-types'
 
 export default function Home({ countries }) {
   const [keyword, setKeyword] = useState("");
@@ -37,6 +38,10 @@ export default function Home({ countries }) {
       <CountriesTable countries={filteredCountries} />
     </Layout>
   );
+}
+
+Home.propTypes = {
+  countries: PropTypes.array
 }
 
 export const getStaticProps = async () => {

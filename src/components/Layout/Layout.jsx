@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "./Layout.module.css";
 import Brightness6Rounded from "@material-ui/icons/Brightness6Rounded";
+import Proptypes from 'prop-types';
 
 const Layout = ({ children, title = "World Ranks" }) => {
   const [theme, setTheme] = useState("light");
@@ -79,5 +80,10 @@ const Layout = ({ children, title = "World Ranks" }) => {
     </>
   );
 };
+
+Layout.propTypes = {
+  children: Proptypes.string,
+  title: Proptypes.string
+}
 
 export default Layout;

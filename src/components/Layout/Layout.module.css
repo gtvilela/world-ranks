@@ -17,7 +17,20 @@
 }   
 
 .footer {
+    padding: 20px;
     text-align: center;
     font-size: 0.75rem;
 }
 
+.theme_switcher {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+
+    color: var(--text-secondary);
+    margin-left: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

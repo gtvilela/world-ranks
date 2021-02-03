@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import styles from "./CountriesTable.module.css";
 import {
   KeyboardArrowDownRounded,
   KeyboardArrowUpRounded,
 } from "@material-ui/icons";
 import Proptypes from 'prop-types';
-import { CountriesTableHeading, CountriesTableButton } from "./StyledComponents";
+import { CountriesTableHeading, CountriesTableButton, HeadingFlag, Row, Arrow, Flag, Name, Population, Area, Gini } from "./StyledComponents";
 
 
 const orderBy = (countries, value, direction) => {
@@ -26,15 +25,15 @@ const SortArrow = ({ direction }) => {
   }
   if (direction === "desc") {
     return (
-      <div className={styles.heading_arrow}>
+      <Arrow>
         <KeyboardArrowDownRounded color="inherit" />
-      </div>
+      </Arrow>
     );
   } else {
     return (
-      <div className={styles.heading_arrow}>
+      <Arrow>
         <KeyboardArrowUpRounded color="inherit" />
-      </div>
+      </Arrow>
     );
   }
 };
@@ -61,16 +60,16 @@ const CountriesTable = ({ countries }) => {
   return (
     <div>
       <CountriesTableHeading>
-        <div className={styles.heading_flag}></div>
+        <HeadingFlag className="heading_flag"></HeadingFlag>
         <CountriesTableButton
-          className={styles.heading_name}
+          className="heading_name"
           onClick={() => setValueAndDirection("name")}
         >
           <div>Name</div>
           {value === "name" && <SortArrow direction={direction} />}
         </CountriesTableButton>
         <CountriesTableButton
-          className={styles.heading_population}
+          className="heading_population"
           onClick={() => setValueAndDirection("population")}
         >
           <div>Population</div>
@@ -78,7 +77,7 @@ const CountriesTable = ({ countries }) => {
         </CountriesTableButton>
 
         <CountriesTableButton
-          className={styles.heading_area}
+          className="heading_area"
           onClick={() => setValueAndDirection("name")}
         >
           <div>
@@ -87,7 +86,7 @@ const CountriesTable = ({ countries }) => {
           {value === "area" && <SortArrow direction={direction} />}
         </CountriesTableButton>
         <CountriesTableButton
-          className={styles.heading_gini}
+          className="heading_gini"
           onClick={() => setValueAndDirection("population")}
         >
           <div>Gini</div>
@@ -97,15 +96,15 @@ const CountriesTable = ({ countries }) => {
 
       {orderedCountries.map((country) => (
         <Link href={`/country/${country.alpha3Code}`} key={country.name}>
-          <div className={styles.row}>
-            <div className={styles.flag}>
+          <Row>
+            <Flag>
               <img src={country.flag} alt={country.name}></img>
-            </div>
-            <div className={styles.name}>{country.name}</div>
-            <div className={styles.population}>{country.population}</div>
-            <div className={styles.area}>{country.area || 0}</div>
-            <div className={styles.gini}>{country.gini || 0} %</div>
-          </div>
+            </Flag>
+            <Name>{country.name}</Name>
+            <Population>{country.population}</Population>
+            <Area>{country.area || 0}</Area>
+            <Gini>{country.gini || 0} %</Gini>
+          </Row>
         </Link>
       ))}
     </div>

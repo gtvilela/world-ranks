@@ -26,7 +26,7 @@ const Country = ({ country }) => {
         <div className={styles.details_panel}>
             <h4 className={styles.details_panel_heading}>Details</h4>
             <div>
-                <div>Captial</div>
+                <div className={styles.details_panel_row}>Captial</div>
                 <div>{country.captial}</div>
             </div>
         </div>

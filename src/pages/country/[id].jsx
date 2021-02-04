@@ -1,8 +1,26 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
-import styles from "./country.module.css";
-import Proptypes from 'prop-types'
-
+import Proptypes from "prop-types";
+import {
+  Container,
+  OverviewName,
+  FlagImg,
+  OverviewLabel,
+  OverviewNumber,
+  OverviewPanel,
+  OverviewRegion,
+  ContainerLeft,
+  ContainerRight,
+  DetailsPanel,
+  DetailsPanelHeading,
+  DetailsPanelRow,
+  DetailsPanelLabel,
+  DetailsPanelBorders,
+  DetailsPanelBordersLabel,
+  DetailsPanelBordersContainer,
+  DetailsPanelBordersCountry,
+  DetailsPanelBordersCountryFlag
+} from "./StyledComponent";
 
 const getCountry = async (id) => {
   const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
@@ -10,8 +28,6 @@ const getCountry = async (id) => {
 
   return country;
 };
-
-
 
 const Country = ({ country }) => {
   const [borders, setBorders] = useState([]);
@@ -30,98 +46,88 @@ const Country = ({ country }) => {
 
   return (
     <Layout title={country.name}>
-      <div className={styles.container}>
-        <div className={styles.container_left}>
-          <div className={styles.overview_panel}>
-            <img src={country.flag} alt={country.name}></img>
+      <Container>
+        <ContainerLeft>
+          <OverviewPanel>
+            <FlagImg src={country.flag} alt={country.name}></FlagImg>
 
-            <h1 className={styles.overview_name}>{country.name}</h1>
-            <div className={styles.overview_region}>{country.region}</div>
+            <OverviewName>{country.name}</OverviewName>
+            <OverviewRegion>{country.region}</OverviewRegion>
 
-            <div className={styles.overview_number}>
-              <div className={styles.overview_population}>
-                <div className={styles.overview_value}>
-                  {country.population}
-                </div>
-                <div className={styles.overview_label}>Population</div>
+            <OverviewNumber>
+              <div>
+                <div>{country.population}</div>
+                <OverviewLabel>Population</OverviewLabel>
               </div>
-              <div className={styles.overview_area}>
-                <div className={styles.overview_value}>{country.area}</div>
-                <div className={styles.overview_label}>Area</div>
+              <div>
+                <div>{country.area}</div>
+                <OverviewLabel>Area</OverviewLabel>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.container_right}>
-          <div className={styles.details_panel}>
-            <h4 className={styles.details_panel_heading}>Details</h4>
+            </OverviewNumber>
+          </OverviewPanel>
+        </ContainerLeft>
+        <ContainerRight>
+          <DetailsPanel>
+            <DetailsPanelHeading>Details</DetailsPanelHeading>
 
-            <div className={styles.details_panel_row}>
-              <div className={styles.details_panel_label}>Capital</div>
-              <div className={styles.details_panel_value}>
-                {country.capital}
-              </div>
-            </div>
+            <DetailsPanelRow>
+              <DetailsPanelLabel>Capital</DetailsPanelLabel>
+              <div>{country.capital}</div>
+            </DetailsPanelRow>
 
-            <div className={styles.details_panel_row}>
-              <div className={styles.details_panel_label}>Subregion</div>
-              <div className={styles.details_panel_value}>
-                {country.subregion}
-              </div>
-            </div>
+            <DetailsPanelRow>
+              <DetailsPanelLabel>Subregion</DetailsPanelLabel>
+              <div>{country.subregion}</div>
+            </DetailsPanelRow>
 
-            <div className={styles.details_panel_row}>
-              <div className={styles.details_panel_label}>Languages</div>
-              <div className={styles.details_panel_value}>
-                {country.languages.map(({ name }) => name).join(", ")}
-              </div>
-            </div>
+            <DetailsPanelRow>
+              <DetailsPanelLabel>Languages</DetailsPanelLabel>
+              <div>{country.languages.map(({ name }) => name).join(", ")}</div>
+            </DetailsPanelRow>
 
-            <div className={styles.details_panel_row}>
-              <div className={styles.details_panel_label}>Currency</div>
-              <div className={styles.details_panel_value}>
-                {country.currencies.map(({ name }) => name).join(", ")}
-              </div>
-            </div>
+            <DetailsPanelRow>
+              <DetailsPanelLabel>Currency</DetailsPanelLabel>
+              <div>{country.currencies.map(({ name }) => name).join(", ")}</div>
+            </DetailsPanelRow>
 
-            <div className={styles.details_panel_row}>
-              <div className={styles.details_panel_label}>Native name</div>
-              <div className={styles.details_panel_value}>
-                {country.nativeName}
-              </div>
-            </div>
+            <DetailsPanelRow>
+              <DetailsPanelLabel>Native name</DetailsPanelLabel>
+              <div>{country.nativeName}</div>
+            </DetailsPanelRow>
 
-            <div className={styles.details_panel_row}>
-              <div className={styles.details_panel_label}>Gini</div>
-              <div className={styles.details_panel_value}>{country.gini} %</div>
-            </div>
+            <DetailsPanelRow>
+              <DetailsPanelLabel>Gini</DetailsPanelLabel>
+              <div>{country.gini} %</div>
+            </DetailsPanelRow>
 
-            <div className={styles.details_panel_borders}>
-              <div className={styles.details_panel_borders_label}>
+            <DetailsPanelBorders>
+              <DetailsPanelBordersLabel>
                 Neighbouring Countries
-              </div>
+              </DetailsPanelBordersLabel>
 
-              <div className={styles.details_panel_borders_container}>
+              <DetailsPanelBordersContainer>
                 {borders.map(({ flag, name }) => (
-                  <div key={name} className={styles.details_panel_borders_country}>
-                    <img src={flag} alt={name}></img>
-                    <div className={styles.details_panel_borders_name}>
+                  <DetailsPanelBordersCountry
+                    key={name}
+                  >
+                    <DetailsPanelBordersCountryFlag src={flag} alt={name}></DetailsPanelBordersCountryFlag>
+                    <div>
                       {name}
                     </div>
-                  </div>
+                  </DetailsPanelBordersCountry>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </DetailsPanelBordersContainer>
+            </DetailsPanelBorders>
+          </DetailsPanel>
+        </ContainerRight>
+      </Container>
     </Layout>
   );
 };
 
 Country.propTypes = {
-  country: Proptypes.object
-}
+  country: Proptypes.object,
+};
 
 export default Country;
 

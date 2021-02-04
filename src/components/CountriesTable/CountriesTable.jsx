@@ -5,7 +5,7 @@ import {
   KeyboardArrowUpRounded,
 } from "@material-ui/icons";
 import Proptypes from 'prop-types';
-import { CountriesTableHeading, CountriesTableButton, HeadingFlag, Row, Arrow, Flag, Name, Population, Area, Gini } from "./StyledComponents";
+import { CountriesTableHeading, CountriesTableButton, HeadingFlag, Row, Arrow, Flag, Name, Population, Area, Gini } from "./StyledComponent";
 
 
 const orderBy = (countries, value, direction) => {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import styles from "./Layout.module.css";
 import Brightness6Rounded from "@material-ui/icons/Brightness6Rounded";
 import Proptypes from 'prop-types';
+import { Container, FooterContainer, HeaderContainer, ThemeSwitcher } from "./StyledComponent";
 
 const Layout = ({ children, title = "World Ranks" }) => {
   const [theme, setTheme] = useState("light");
@@ -31,13 +31,13 @@ const Layout = ({ children, title = "World Ranks" }) => {
   };
   return (
     <>
-      <div className={styles.container}>
+      <Container>
         <Head>
           <title>{title}</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <header className={styles.header}>
+        <HeaderContainer>
           <Link href="/">
             <svg
               width="175"
@@ -66,17 +66,17 @@ const Layout = ({ children, title = "World Ranks" }) => {
             </svg>
           </Link>
 
-          <button className={styles.theme_switcher} onClick={switchTheme}>
+          <ThemeSwitcher onClick={switchTheme}>
             <Brightness6Rounded />
-          </button>
-        </header>
+          </ThemeSwitcher>
+        </HeaderContainer>
 
-        <main className={styles.main}>{children}</main>
+        <main>{children}</main>
 
-        <footer className={styles.footer}>
+        <FooterContainer>
           Taught by: Thu Nghiem / Made by: Gabriela Vilela{" "}
-        </footer>
-      </div>
+        </FooterContainer>
+      </Container>
     </>
   );
 };

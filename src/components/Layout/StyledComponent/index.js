@@ -1,4 +1,6 @@
-.container {
+import styled from "styled-components";
+
+export const Container = styled.div`
   padding: 24px;
   height: 100vh;
 
@@ -7,22 +9,22 @@
 
   max-width: 1100px;
   margin: 0 auto;
-}
+`;
 
-.header {
+export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 32px;
-}
+`;
 
-.footer {
+export const FooterContainer = styled.footer`
   padding: 20px;
   text-align: center;
   font-size: 0.75rem;
-}
+`;
 
-.theme_switcher {
+export const ThemeSwitcher = styled.button`
   border: none;
   background-color: transparent;
   padding: 0;
@@ -33,4 +35,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+`

@@ -1,13 +1,13 @@
 import React from 'react'
 import SearchRounded from "@material-ui/icons/SearchRounded";
-import styles from "./SearchInput.module.css";
+import { Input, Wrapper } from './StyledComponent';
 
 const SearchInput = ({ ...rest }) => {
   return (
-    <div className={styles.wrapper}>
+    <Wrapper>
       <SearchRounded color="inherit" />
-      <input className={styles.input} {...rest} />
-    </div>
+      <Input {...rest} />
+    </Wrapper>
   );
 };
 
